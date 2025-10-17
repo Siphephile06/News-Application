@@ -5,14 +5,8 @@ from django.conf import settings
 
 
 class CustomUser(AbstractUser):
-    """ Model representing users with with different roles.
-    Fields:
-        - Username: The username of the user.
-        - Email: The email address of the user.
-        - Role: The role of the user, constrained to predefined choices.
-    Methods:
-        - __str__: Returns the username of the user for easy identification.
-    """
+    """ Model representing users with with different roles."""
+    
     ROLE_CHOICES = [
         ('reader', 'Reader'),
         ('editor', 'Editor'),
@@ -59,16 +53,8 @@ class CustomUser(AbstractUser):
         return self.username
 
 class Publisher(models.Model):
-    """ Model representing a publisher.
-    Fields:
-        - Name: The name of the publisher.
-        - Email: The contact email of the publisher.
-        - Password: The password for the publisher's account.
-        - Editor: A foreign key linking to a CustomUser.
-        - Journalist: A foreign key linking to a CustomUser.
-    Methods:
-        - __str__: Returns the name of the publisher for easy identification.
-    """
+    """ Model representing a publisher."""
+
     name = models.CharField(max_length=200)
     email = models.EmailField()
     password = models.CharField(max_length=100)
@@ -95,16 +81,8 @@ class Publisher(models.Model):
 
 
 class Article(models.Model):
-    """ Model representing a news article.
-    Fields:
-        - Headline: The title of the article.
-        - Byline: The author of the article.
-        - Body: The main content of the article.
-        -conclusion: The concluding part of the article.
+    """ Model representing a news article."""
 
-    Methods:
-        - __str__: Returns the headline of the article for easy identification.
-    """
     class Meta:
         permissions = [
             ("review_articles", "Can review articles"),
@@ -132,15 +110,8 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class Newsletter(models.Model):
-    """ Model representing a newsletter.
-    Fields:
-        - Title: The title of the newsletter.
-        - Issue Date: The date the newsletter was issued.
-        - Articles: A many-to-many relationship with Article.
+    """ Model representing a newsletter."""
 
-    Methods:
-        - __str__: Returns the title of the newsletter for easy identification.
-    """
     title = models.CharField(max_length=200)
     issue_date = models.DateField()
     articles = models.ManyToManyField(Article)
@@ -150,17 +121,8 @@ class Newsletter(models.Model):
 
 
 class ResetToken(models.Model):
-    """ Model representing a password reset token.
-    Fields:
-        - User: A foreign key linking to a CustomUser.
-        - Token: The unique token string.
-        - Created At: The timestamp when the token was created.
-        - Expires At: The timestamp when the token expires.
-        - Used: A boolean indicating whether the token has been used.
-    Methods:
-        - __str__: Returns a string representation of the token for easy
-        identification.
-    """
+    """ Model representing a password reset token."""
+    
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     token = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
