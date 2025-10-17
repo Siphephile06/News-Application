@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Articles Pending Review</h2>
+    {% if articles %}
+        <ul class="list-group">
+            {% for article in articles %}
+                <li class="list-group-item">
+                    <h5>{{ article.title }}</h5>
+                    <p>{{ article.summary|default:article.body|truncatewords:30 }}</p>
+                    <small>Submitted by: {{ article.author.username }} on {{ article.created_at|date:"F j, Y" }}</small>
+                    <!-- Optional: Add approve/reject buttons -->
+                    <form action="{% url 'approve_article' article.pk %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No articles are currently awaiting review.</p>
+    {% endif %}
+</div>
+{% endblock %}

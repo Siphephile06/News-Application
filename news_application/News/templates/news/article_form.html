@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-container">
+    <h2>{% if form.instance.pk %}
+            Edit Article
+        {% else %}
+            Create New Article
+        {% endif %}
+    </h2>
+    
+    <form method="post" class="article-form">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {% for error in form.non_field_errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+            <div class="field-error">
+                {% for error in field.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+            {% endif %}
+        </div>
+        {% endfor %}
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                {% if form.instance.pk %}Update Article{% else %}Create Article{% endif %}
+            </button>
+            <a href="{% url 'article_list' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

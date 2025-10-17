@@ -1,0 +1,216 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+/* Header Styles */
+header {
+    background: #333;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: 3px solid #e8491d;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header ul {
+    margin: 0;
+    padding: 0;
+}
+
+header li {
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+header #branding {
+    float: left;
+}
+
+header #branding h1 {
+    margin: 0;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header .highlight, header .current a {
+    color: #e8491d;
+    font-weight: bold;
+}
+
+header a:hover {
+    color: #ccc;
+    font-weight: bold;
+}
+
+/* Article List Styles */
+.article-list {
+    padding: 20px;
+}
+
+.article-list h2 {
+    color: #e8491d;
+}
+
+.article-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.article-list li {
+    border-bottom: 1px #ccc dotted;
+    padding: 10px 0;
+}
+
+/* Article Detail Styles */
+.article-detail {
+    padding: 20px;
+    background: #fff;
+    margin-top: 20px;
+}
+
+.article-header {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.article-meta {
+    font-style: italic;
+    color: #777;
+}
+
+.article-content {
+    line-height: 1.6;
+}
+
+.article-actions {
+    margin-top: 20px;
+}
+
+/* Form Styles */
+.form-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.field-error {
+    margin-top: 0.25rem;
+}
+
+.form-actions {
+    margin-top: 2rem;
+}
+
+/* Delete Confirmation Styles */
+.delete-confirmation {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+.action-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.alert {
+    margin: 2rem 0;
+}
+
+/* Newsletter Styles */
+.newsletter-container {
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+}
+
+.newsletter-header h1 {
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.newsletter-meta {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.newsletter-content {
+    line-height: 1.6;
+    color: #555;
+}
+
+.newsletter-actions {
+    margin-top: 20px;
+}
+
+/* Utility Classes */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+.btn-primary {
+    background-color: #e8491d;
+}
+
+.btn-primary:hover {
+    background-color: #c63917;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}

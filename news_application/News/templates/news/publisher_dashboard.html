@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Welcome, {{ user.username }} — Publisher Dashboard</h2>
+
+    <!-- Publisher Info -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>{{ publisher.name }}</h4>
+            <p>Email: {{ publisher.email }}</p>
+        </div>
+    </div>
+
+    <!-- Team Management -->
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Editors</h5>
+            <ul class="list-group mb-3">
+                {% for editor in publisher.editors.all %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ editor.username }}
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">No editors assigned.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <h5>Journalists</h5>
+            <ul class="list-group mb-3">
+                {% for journalist in publisher.journalists.all %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ journalist.username }}
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">No journalists assigned.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Content Management -->
+    <div class="mt-5">
+        <h5>Published Articles</h5>
+        <ul class="list-group">
+            {% for article in publisher.articles.all %}
+                <li class="list-group-item">
+                    <strong>{{ article.headline }}</strong> by {{ article.author.username }}
+                    {% if article.approved %}
+                        <span class="badge bg-success float-end">Approved</span>
+                    {% else %}
+                        <span class="badge bg-warning float-end">Pending</span>
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li class="list-group-item">No articles published yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <h5>Published Newsletters</h5>
+        <ul class="list-group">
+            {% for newsletter in publisher.newsletters.all %}
+                <li class="list-group-item">
+                    {{ newsletter.title }} — {{ newsletter.issue_date }}
+                </li>
+            {% empty %}
+                <li class="list-group-item">No newsletters published yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

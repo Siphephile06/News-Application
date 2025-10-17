@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscribe</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Subscribe to Our Updates</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="email">Email address:</label>
+            <input type="email" name="email" id="email" required>
+            <button type="submit" a href="{% url 'subscribe_publishers' %}">Subscribe To Publishers</button>
+            <button type="submit" a href="{% url 'subscribe_journalists' %}">Subscribe To Journalists</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}
