@@ -27,11 +27,12 @@ docker build -t news-app .
 
 2. # Run the container:
 
-docker run -d -p 8000:8000 --env-file .env news-app
+docker run -d -p 8000:8000 news-app
 
 3. # Access the application:
 
 Visit http://localhost:8000 in your browser.
+
 
 
 
