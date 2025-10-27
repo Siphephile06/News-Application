@@ -15,14 +15,7 @@ This is a Django-based News Application that can be run locally using Python's `
 
 pip install -r requirements.txt
 
-3. # Set up environment variables:
-   - Add required secrets like:
-
-SECRET_KEY=your-secret-key
-DEBUG=True
-DATABASE_URL=your-database-url
-
-4. # Apply migrations and run the server.
+3. # Apply migrations and run the server.
 
 python manage.py migrate
 python manage.py runserver
@@ -39,6 +32,7 @@ docker run -d -p 8000:8000 --env-file .env news-app
 3. # Access the application:
 
 Visit http://localhost:8000 in your browser.
+
 
 
 
