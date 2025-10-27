@@ -1,12 +1,19 @@
 import os
 import sys
 import django
+from pathlib import Path
 
-sys.path.insert(0, os.path.abspath('../../'))
-os.environ['DJANGO_SETTINGS_MODULE'] = 'News Appilcation.settings'
+# This is the folder that contains the Django module 'news_application'
+DJANGO_PARENT = Path(__file__).resolve().parent.parent.parent / 'news_application'
 
+# Add it to sys.path so Python can find 'news_application'
+sys.path.insert(0, str(DJANGO_PARENT))
+
+# Set the correct settings module
+os.environ['DJANGO_SETTINGS_MODULE'] = 'news_application.settings'
+
+# Setup Django
 django.setup()
-
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -15,7 +22,7 @@ django.setup()
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'News Application'
+project = 'News'
 copyright = '2025, Siphephile'
 author = 'Siphephile'
 release = '1.0'
