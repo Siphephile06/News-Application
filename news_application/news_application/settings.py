@@ -11,15 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import os
-from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-# Load environment variables from .env file.
-load_dotenv(dotenv_path=BASE_DIR / '.env')
-
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -83,11 +77,11 @@ WSGI_APPLICATION = 'news_application.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('mySQL_db'),
-        'USER': os.getenv('Sphephile'),
-        'PASSWORD': os.getenv('M!gwel2006'),
-        'HOST': os.getenv('localhost'),
-        'PORT': os.getenv('3306'),
+        'NAME': 'mySQL_db',
+        'USER': 'Sphephile',
+        'PASSWORD': 'M!gwel2006',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -147,3 +141,4 @@ AUTH_USER_MODEL = "News.CustomUser"
 LOGIN_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
