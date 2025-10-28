@@ -16,6 +16,7 @@ This is a Django-based News Application that can be run locally using Python's `
 pip install -r requirements.txt
 
 3. Configure Environment Variables
+
 Create your .env file: Copy the example and fill in your values
 
 Bash
@@ -40,6 +41,7 @@ docker run --env-file .env -d -p 8000:8000 news-app
 3. # Access the application:
 
 Visit http://localhost:8000 in your browser.
+
 
 
 
