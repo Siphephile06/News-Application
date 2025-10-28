@@ -25,6 +25,7 @@ cp .env.example .env
 4. # Apply migrations and run the server.
 
 python manage.py migrate
+
 python manage.py runserver
 
 🐳 Running with Docker
@@ -39,6 +40,7 @@ docker run --env-file .env -d -p 8000:8000 news-app
 3. # Access the application:
 
 Visit http://localhost:8000 in your browser.
+
 
 
 
