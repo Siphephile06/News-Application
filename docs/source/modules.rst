@@ -3,12 +3,12 @@ Modules
 
 This section documents the main modules of the News Application.
 
-.. automodule:: news.models
+.. automodule:: News.models
    :members:
    :undoc-members:
    :show-inheritance:
 
-.. automodule:: news.views
+.. automodule:: News.views
    :members:
    :undoc-members:
    :show-inheritance:
