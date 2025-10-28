@@ -1,9 +1,0 @@
-Welcome to News's documentation!
-================================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-.. automodule:: news_application
-   :members:
