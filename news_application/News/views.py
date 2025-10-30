@@ -328,8 +328,8 @@ def create_article(request):
             if article.approved:
                 if hasattr(Tweet, '_instance') and Tweet._instance:
                     new_article_tweet = f"New article posted on NewsHub!\n{article.headline}\n" 
-                    tweet = {'text': new_article_tweet} 
-                    Tweet._instance.make_tweet(tweet)
+                    tweet_client = Tweet.get_instance()
+                    tweet_client.make_tweet({'text': new_article_tweet})
                     return redirect('article_list')
                 else:
                     print("Tweet client not initialized. Skipping tweet.")
