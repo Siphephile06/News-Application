@@ -1,96 +1,138 @@
-📰 News Application
+# News Application
 
-A Django-based News Application that allows users to view, manage, and publish news articles. It can be run locally using Python's virtual environment or containerized with Docker.
+A Django-based platform for publishing, managing, and viewing news articles. Supports local development and Docker deployment, with role-based dashboards and social media integration.
 
-📦 Features
+# Table of Contents
 
-- User authentication and session management
-- Article creation, editing, and approval workflows
-- Role-based contributor dashboards (e.g., editors, journalists)
-- Email and social media notifications for subscribers
-- Responsive UI with static asset management
-- Environment variable support for secure configuratio
+- Project Overview
+- Features
+- Installation
+  * Local Setup
+  * Docker Setup
+- Usage
+- Environment Variables
+- Testing
+- Documentation
+- Contributor Guide
+- Troubleshooting
 
-🚀 Getting Started
+# Project Overview
 
-🔧 Local Setup with Python Virtual Environment
+This application provides a simple interface for managing news articles, including:
 
-1. Create and Activate a Virtual Environment
+- Article creation and editing
+- User authentication
+- Role-based access (e.g., editors, contributors)
+- Dockerized deployment
+- Environment-based configuration
 
-python -m venv venv
+
+# Features
+
+- 🔐 User authentication and session management
+- 📝 Article creation, editing, and approval workflows
+- 👥 Role-based dashboards for editors and journalists
+- 📣 Email and social media notifications for subscribers
+- 💻 Responsive UI with static asset management
+- 🔧 Secure configuration via environment variable
+
+# Installation
+
+## Local Setup
+
+1.) Create and activate a virtual environment
+
+```python -m venv venv```
 
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
+2.) Install dependencies:
 
-2. Install Dependencies
-   
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 
+3.) Configure environment variables:
 
-3. Configure Environment Variables
-   
-Copy the example file and fill in your values:
+```cp .env.example .env```
 
-cp .env.example .env
+- Fill in all required values. See Environment Variables.
 
+4.) Apply migrations and start the server:
 
-Make sure to include all required variables. Refer to the README section Environment Variables below for details.
+```python manage.py migrate```
+```python manage.py runserver```
 
-4. Apply Migrations and Start the Server
+- Visit http://localhost:8000 to access the app.
 
-python manage.py migrate
+# Docker Setup
 
-python manage.py runserver
+1.) Build the Docker image:
 
+```docker build -t news-app .```
 
-Visit http://localhost:8000 to access the application.
+2.) Run the container:
 
-🐳 Running with Docker
+```docker run --env-file .env -d -p 8000:8000 news-app```
 
-1. Build the Docker Image
-
-docker build -t news-app .
-
-
-2. Run the Container
-
-docker run --env-file .env -d -p 8000:8000 news-app
+- Visit http://localhost:8000 in your browser.
 
 
-Visit http://localhost:8000 in your browser.
+# Usage
 
-🔐 Environment Variables
+- Log in or register a user.
+- Create and submit articles for approval.
+- Editors can approve and publish articles.
+- Subscribers recieve notifications for new posts.
 
-Ensure your .env file includes all required variables.
+# Testing
 
-Refer to .env.example for a complete list.
+Run unit tests with:
 
-🧪 Running Tests
+```python manage.py test```
 
-python manage.py test
+# Documentation
+
+Auto-generated via Sphinx.
+
+1.) Navigate to the docs folder.
+
+```cd docs```
+
+2.) Build the HTML docs.
+
+```make html # on windows .\make.bat html
+
+3.) Open docs/_build/html/index.html in your browser.
 
 
-📚 Documentation
+# Contributor Guide
 
-Auto-generated documentation is available via Sphinx. To build it locally:
+- Ensure .env is configured correctly.
+- Follow PEP8 and Django best practices.
+- Use feature branches and submit pull requests.
+- Update documentation and tests for new features.
 
-cd docs
+# Troubleshooting
 
-make html  # On Windows: .\make.bat html
+1.) Static files not loading?
+
+Run:
+
+```python manage.py collectstatic```
+
+2.) Login/Session Issues?
+
+- Check browser cookies and session middleware.
+
+3.) Docker not working?
+
+- Ensure .env is correctly passed and ports are available.
 
 
-Open docs/_build/html/index.html in your browser.
 
-👥 Contributor Guide
 
-- Ensure .env is configured correctly
-- Follow PEP8 and Django best practices
-- Use feature branches and submit pull requests
-- Update documentation and tests for new features
 
-🛠️ Troubleshooting
 
-- Static files not loading? Run python manage.py collectstatic
-- Login/session issues? Check browser cookies and session middleware
-- Docker not working? Ensure .env is correctly passed and ports are available
+
+
+
 
