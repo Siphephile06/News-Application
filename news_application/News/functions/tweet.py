@@ -9,6 +9,7 @@ class Tweet():
 
     def __init__(self, api_keys):
         self.api_keys = api_keys
+        self.oauth = self.oauth1_session()
 
 
     @classmethod
@@ -63,31 +64,17 @@ class Tweet():
         return oauth
 
     def make_tweet(self, tweet):
-
-        if self.oauth:
-            # Making the request
-            response = self.oauth.post(
-                "https://api.twitter.com/2/tweets",
-                json=tweet,
-            )
-        else:
-            raise ValueError('Authentication failed!')
-
+        if not self.oauth:
+            raise ValueError("OAuth session not initialized.")
+        response = self.oauth.post("https://api.twitter.com/2/tweets", json=tweet)
         if response.status_code != 201:
-            raise Exception("Request returned an error: {}{}".format(response.status_code, response.text))
+            raise Exception(f"Tweet failed: {response.status_code} {response.text}")
+        return response.json()
 
-        print("Response code: {}".format(response.status_code))
-
-        # Saving the response as JSON
-        json_response = response.json()
-        print(json.dumps(json_response, indent=4, sort_keys=True))
-        return json_response
-
-    def __new__(cls, *args, **kwargs):
-        # Singleton pattern to ensure only one instance of Tweet exists
+    @classmethod
+    def get_instance(cls):
         if cls._instance is None:
-            print('Creating the object')
-            cls._instance = super(Tweet, cls).__new__(cls)
-            cls._instance.oauth = cls._instance.oauth1_session()
-        # Put any initialisation here.
+            raise ValueError("Tweet client not initialized. Call Tweet.initialize() first.")
         return cls._instance
+
+
