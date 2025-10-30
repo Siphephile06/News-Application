@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% block title %}
+Newsletters
+{% endblock %}
+<h1>Newsletters</h1>
+<ul>
+    {% for newsletter in newsletters %}
+    {% if user.is_authenticated and newsletter.pk %}
+            <li>
+                <a href="{% url 'view_newsletter' newsletter.pk %}">
+                    View: {{ newsletter.title }}</a>
+            </li>
+    {% endif %}
+    {% empty %}
+    <li>No newsletters available.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_newsletter' %}">Create Newsletter</a>
+
+{% endblock %}

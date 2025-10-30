@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h1>Subscribe to Our Updates</h1>
+    <form method="post" action="{% url 'subscribe' %}">
+        {% csrf_token %}
+
+        <!-- Email Input -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address:</label>
+            <input type="email" name="email" id="email" class="form-control" required>
+        </div>
+
+        <!-- Choose Publisher -->
+        <div class="mb-3">
+            <label for="publisher" class="form-label">Select Publisher:</label>
+            <select name="publisher_id" id="publisher" class="form-select">
+                <option value="">-- None --</option>
+                {% for publisher in publishers %}
+                    <option value="{{ publisher.id }}">{{ publisher.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Choose Journalist -->
+        <div class="mb-3">
+            <label for="journalist" class="form-label">Select Journalist:</label>
+            <select name="journalist_id" id="journalist" class="form-select">
+                <option value="">-- None --</option>
+                {% for journalist in journalists %}
+                    <option value="{{ journalist.id }}">{{ journalist.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+</div>
+{% endblock %}

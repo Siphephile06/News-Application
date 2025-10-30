@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Review Unapproved Articles</h2>
+
+  {% if articles %}
+    {% for article in articles %}
+  <div class="card mb-4">
+    <div class="card-header">
+      <h4>{{ article.headline }}</h4>
+      <small>By {{ article.author.username }} on {{ article.created_at|date:"F j, Y" }}</small>
+    </div>
+    <div class="card-body">
+      <p>{{ article.body|truncatewords:50 }}</p>
+      <form method="post" action="">
+        {% csrf_token %}
+        {{ forms.article.id.as_p }}
+        <button type="submit" class="btn btn-success">Submit Review</button>
+      </form>
+    </div>
+  </div>
+{% endfor %}
+  {% else %}
+    <p>No articles pending review.</p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Editor Dashboard</h2>
+<p>Welcome, {{ user.username }}!</p>
+
+<h2>Unapproved Articles</h2>
+<ul>
+  {% for article in unapproved_articles %}
+    <li>
+      {{ article.headline }}
+      <form method="post" action="{% url 'approve_article' article.id %}" style="display:inline;">
+          {% csrf_token %}
+              <button type="submit" class="btn btn-sm btn-primary">Approve</button>
+      </form>
+    </li>
+  {% empty %}
+    <li>No unapproved articles.</li>
+  {% endfor %}
+</ul>
+
+<h2>Approved Articles</h2>
+<ul>
+  {% for article in approved_articles %}
+    <li>{{ article.headline }}</li>
+  {% empty %}
+    <li>No approved articles yet.</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'review_articles' %}">Review Articles</a>
+{% endblock %}
