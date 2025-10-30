@@ -59,6 +59,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 4.) Apply migrations and start the server:
 
 ```python manage.py migrate```
+
 ```python manage.py runserver```
 
 - Visit http://localhost:8000 to access the app.
@@ -111,6 +112,7 @@ Auto-generated via Sphinx.
 - Use feature branches and submit pull requests.
 - Update documentation and tests for new features.
 
+
 # Troubleshooting
 
 1.) Static files not loading?
@@ -126,6 +128,7 @@ Run:
 3.) Docker not working?
 
 - Ensure .env is correctly passed and ports are available.
+
 
 
 
