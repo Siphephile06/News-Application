@@ -12,6 +12,7 @@ A Django-based News Application that allows users to view, manage, and publish n
 - Environment variable support for secure configuratio
 
 🚀 Getting Started
+
 🔧 Local Setup with Python Virtual Environment
 
 1. Create and Activate a Virtual Environment
@@ -27,7 +28,9 @@ pip install -r requirements.txt
 
 
 3. Configure Environment Variables
+   
 Copy the example file and fill in your values:
+
 cp .env.example .env
 
 
@@ -90,3 +93,4 @@ Open docs/_build/html/index.html in your browser.
 - Static files not loading? Run python manage.py collectstatic
 - Login/session issues? Check browser cookies and session middleware
 - Docker not working? Ensure .env is correctly passed and ports are available
+
